@@ -14,3 +14,8 @@ function containsDuplicate(nums: number[]): boolean {
 
   return false
 }
+
+const containsDuplicate2 = (nums: number[]): boolean => {
+  const uniqNums = new Set<number>(nums)
+  return uniqNums.size < nums.length
+}
