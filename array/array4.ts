@@ -16,27 +16,21 @@ function threeSum(nums: number[]): number[][] {
 
     while (l < r) {
       const sum = nums[i] + nums[l] + nums[r]
-      if (sum === 0) {
-        triplets.push([nums[i], nums[l], nums[r]])
 
-        while (l < r && nums[l] === nums[l + 1]) {
+      if (sum < 0) {
+        l++
+      } else if (sum > 0) {
+        r--
+      } else {
+        triplets.push([nums[i], nums[l], nums[r]])
+        l++
+
+        while (l < r && nums[l] === nums[l - 1]) {
           l++
         }
-
-        while (l < r && nums[r] === nums[r + 1]) {
-          r++
-        }
-
-        l++
-        r--
-      } else if (sum < 0) {
-        l++
-      } else {
-        r--
       }
     }
   }
-
   return triplets
 }
 console.log(threeSum([-1, 0, 1, 2, -1, -4]))
